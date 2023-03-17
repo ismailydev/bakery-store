@@ -9,6 +9,7 @@ export default {
                 tertiary: "#676D7C",
                 accent: "#FF7060",
                 light: "#F4F4F4",
+                box: "#D5D6DA",
             },
         },
     },
