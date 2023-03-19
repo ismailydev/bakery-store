@@ -1,12 +1,13 @@
-import { logo, shoppingBag, user } from "../constants";
+import { Link } from "react-router-dom";
+import { logo, shoppingBag, userCircle } from "../constants";
 
 export default function NavBar() {
     return (
         <div className="py-4 shadow-md">
             <div className="max-w-6xl mx-auto flex justify-between items-center">
-                <div className="w-32">
+                <Link to="/" className="w-32">
                     <img src={logo} alt="I&I Rose Garden" className="w-7 h-7" />
-                </div>
+                </Link>
                 <div className="flex-1">
                     <select name="" id="" className="flex items-center">
                         <option value="Shop">Shop</option>
@@ -25,11 +26,7 @@ export default function NavBar() {
                             3
                         </div>
                     </div>
-                    <img
-                        src={user}
-                        alt="user icon"
-                        className="w-[22px] h-[22px] p-0.5 rounded-full border-[1.5px] border-black"
-                    />
+                    <img src={userCircle} alt="user icon" className="w-5 h-5" />
                 </div>
             </div>
         </div>
