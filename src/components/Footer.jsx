@@ -1,4 +1,4 @@
-import { facebook, instagram, logo, twitter } from "../constants";
+import { logo, facebookG, instagramG, twitterG } from "../constants";
 
 export default function Footer() {
     return (
@@ -11,21 +11,21 @@ export default function Footer() {
                             alt="I&I Rose Garden"
                             className="w-7 h-7"
                         />
-                        <div className="flex gap-8">
+                        <div className="flex gap-5">
                             <img
-                                src={facebook}
+                                src={facebookG}
                                 alt="facebook link"
-                                className="w-5 h-5"
+                                className="w-5 h-5 object-contain"
                             />
                             <img
-                                src={twitter}
+                                src={twitterG}
                                 alt="twitter link"
-                                className="w-5 h-5"
+                                className="w-5 h-5 object-contain"
                             />
                             <img
-                                src={instagram}
+                                src={instagramG}
                                 alt="instagram link"
-                                className="w-5 h-5"
+                                className="w-5 h-5 object-contain"
                             />
                         </div>
                     </div>
@@ -59,13 +59,19 @@ export default function Footer() {
                     <div>
                         <h4 className="font-bold">Contact</h4>
                         <ul className="text-tertiary py-2 flex flex-col gap-2">
-                            <li>(617) 775-7865</li>
-                            <li>support@mail.com</li>
+                            <li>
+                                <a href="tel:6177757865">(617) 775-7865</a>
+                            </li>
+                            <li>
+                                <a href="mailto:support@mail.com">
+                                    support@mail.com
+                                </a>
+                            </li>
                             <li>2 Maple Street, Boston, MA 89898</li>
                         </ul>
                     </div>
                 </div>
-                <div className="border-t border-[#D5D6DA] text-tertiary w-full text-center py-4">
+                <div className="border-t border-box text-tertiary w-full text-center py-4">
                     <p>
                         Copyright (c) 2023. I & I Rose Garden. All Rights
                         Reserved
