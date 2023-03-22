@@ -1,0 +1,60 @@
+import { StarIcon as StarIconSolid } from "@heroicons/react/24/solid";
+import { StarIcon as StarIconOutline } from "@heroicons/react/24/outline";
+
+export default function ProductCard({
+    name,
+    category,
+    type,
+    weight,
+    pack,
+    price,
+    rating,
+    reviews,
+    image,
+    stock,
+}) {
+    return (
+        <div>
+            <div className="relative">
+                <img src={image} alt={name} />
+                <div
+                    className={`absolute top-4 left-4 px-3 py-1 text-white text-xs ${
+                        stock === "New Arrival" ? "bg-primary" : "bg-accent"
+                    }`}
+                >
+                    {stock}
+                </div>
+            </div>
+            <div className="p-5 border border-box text-center">
+                <p className="text-xs text-tertiary">{category}</p>
+                <div className="flex flex-col">
+                    <h3 className="font-bold text-lg">
+                        {name} <br />(
+                        {type ||
+                            `${pack ? pack + " Pack | " + weight : weight}`}
+                        )
+                    </h3>
+                </div>
+                <p className="font-bold text-2xl py-2">${price}</p>
+                <div className="text-primary flex justify-center gap-2 py-2 pb-4">
+                    <div className="flex">
+                        {Array.from({ length: rating }, () => true).map(
+                            (_, i) => (
+                                <StarIconSolid key={i} className="h-4 w-4" />
+                            )
+                        )}
+                        {Array.from({ length: 5 - rating }, () => true).map(
+                            (_, i) => (
+                                <StarIconOutline key={i} className="h-4 w-4" />
+                            )
+                        )}
+                    </div>
+                    <p className="font-bold text-xs">{reviews}</p>
+                </div>
+                <button className="bg-secondary text-white w-full py-2 text-sm">
+                    Add to Cart
+                </button>
+            </div>
+        </div>
+    );
+}
