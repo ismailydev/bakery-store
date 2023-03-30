@@ -6,11 +6,13 @@ export default function Footer() {
             <div className="flex flex-col items-center">
                 <div className="grid grid-cols-5 py-12 pb-24 max-w-6xl mx-auto">
                     <div className="flex flex-col gap-4">
-                        <img
-                            src={logo}
-                            alt="I&I Rose Garden"
-                            className="w-7 h-7"
-                        />
+                        <a href="#">
+                            <img
+                                src={logo}
+                                alt="I&I Rose Garden"
+                                className="w-7 h-7"
+                            />
+                        </a>
                         <div className="flex gap-5">
                             <img
                                 src={facebookG}

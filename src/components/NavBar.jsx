@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectCartItems } from "../redux/cartSlice";
 
 import {
     layoutList,
+    layoutListB,
     logOut,
     logo,
     shoppingBag,
@@ -13,6 +14,7 @@ import {
 } from "../constants";
 
 export default function NavBar() {
+    const location = useLocation();
     const products = useSelector(selectCartItems);
     const [menuOpen, setMenuOpen] = useState(false);
 
@@ -48,7 +50,10 @@ export default function NavBar() {
                             onClick={() => setMenuOpen(!menuOpen)}
                         />
                         {menuOpen && (
-                            <div className="z-[100] bg-white border border-box/25 absolute right-0 top-6 shadow-lg w-32 h-28 flex items-center justify-center">
+                            <div
+                                onClick={() => setMenuOpen(false)}
+                                className="z-[100] bg-white border border-box/25 absolute right-0 top-6 shadow-lg w-32 h-28 flex items-center justify-center"
+                            >
                                 <ul className="flex flex-col gap-2 text-sm">
                                     <li className="flex items-center gap-2">
                                         <img
@@ -58,13 +63,24 @@ export default function NavBar() {
                                         />
                                         <p>Account</p>
                                     </li>
-                                    <li className="text-primary">
+                                    <li
+                                        className={`${
+                                            location.pathname === "/account"
+                                                ? "text-primary"
+                                                : ""
+                                        }`}
+                                    >
                                         <Link
                                             to="/account"
                                             className="flex items-center gap-2"
                                         >
                                             <img
-                                                src={layoutList}
+                                                src={
+                                                    location.pathname ===
+                                                    "/account"
+                                                        ? layoutList
+                                                        : layoutListB
+                                                }
                                                 alt="user icon"
                                                 className="w-4 h-4"
                                             />
