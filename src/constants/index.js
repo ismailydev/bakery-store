@@ -4,6 +4,8 @@ import image3 from "../assets/images/Rectangle 34 (2).jpg";
 import image4 from "../assets/images/Rectangle 34 (3).jpg";
 import image5 from "../assets/images/Rectangle 34 (4).jpg";
 import image6 from "../assets/images/Rectangle 34 (5).jpg";
+import image7 from "../assets/images/Rectangle 34 (6).jpg";
+import image8 from "../assets/images/Rectangle 34 (7).jpg";
 
 import logo from "../assets/icons/II_LOGO 3.png";
 import facebook from "../assets/icons/facebook (1).png";
@@ -39,6 +41,6 @@ export {
     truck,
 };
 
-export { image1, image2, image3, image4, image5, image6 };
+export { image1, image2, image3, image4, image5, image6, image7, image8 };
 
 export { data };
