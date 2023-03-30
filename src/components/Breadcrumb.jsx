@@ -33,7 +33,7 @@ export default function Breadcrumb() {
         return (
             <div className="flex">
                 {arr.map((item, i) => (
-                    <div className="flex">
+                    <div className="flex" key={i}>
                         <Link to={item.link} key={i}>
                             <span className={`${i === 0 ? "hidden" : ""} mx-5`}>
                                 |
