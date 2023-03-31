@@ -1,10 +1,30 @@
-import { Link } from "react-router-dom";
-import { CartItem, OrderSummary } from "../components";
-import { ChevronLeftIcon } from "@heroicons/react/24/solid";
-
-import { data as products } from "../constants";
+import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { OrderSummary } from "../components";
+import { countriesURL } from "../constants";
 
 export default function Checkout() {
+    const { pathname } = useLocation();
+    const [countries, setCountries] = useState([]);
+    const [selectedCountry, setSelectedCountry] = useState("United States");
+    const [selectedState, setSelectedState] = useState("Massachusetts");
+
+    const fetchCountries = async () => {
+        const res = await fetch(countriesURL);
+        const { countries: allCountries } = await res.json();
+        setCountries(allCountries);
+    };
+
+    const getStates = (country) => {
+        const countryObj = countries.find((obj) => obj.country === country);
+        return countryObj ? countryObj.states : [];
+    };
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+        fetchCountries();
+    }, [pathname]);
+
     return (
         <div className="min-h-screen py-12 flex gap-12">
             <div className="flex-1">
@@ -14,47 +34,60 @@ export default function Checkout() {
                 <div className="flex flex-col gap-8 py-8">
                     <div className="flex justify-between gap-5">
                         <div className="flex flex-col gap-2 flex-1">
-                            <label htmlFor="" className="font-semibold">
+                            <label
+                                htmlFor="firstName"
+                                className="font-semibold"
+                            >
                                 First Name
                             </label>
                             <input
                                 type="text"
+                                id="firstName"
+                                name="firstName"
                                 className="p-3 border border-box outline-primary"
                             />
                         </div>
                         <div className="flex flex-col gap-2 flex-1">
-                            <label htmlFor="">Last Name</label>
+                            <label htmlFor="lastName">Last Name</label>
                             <input
                                 type="text"
+                                id="lastName"
+                                name="lastName"
                                 className="p-3 border border-box outline-primary"
                             />
                         </div>
                     </div>
                     <div className="flex justify-between gap-5">
                         <div className="flex flex-col gap-2 flex-1">
-                            <label htmlFor="" className="font-semibold">
+                            <label htmlFor="email" className="font-semibold">
                                 Email Address
                             </label>
                             <input
                                 type="email"
+                                id="email"
+                                name="email"
                                 className="p-3 border border-box outline-primary"
                             />
                         </div>
                         <div className="flex flex-col gap-2 flex-1">
-                            <label htmlFor="">Phone Number</label>
+                            <label htmlFor="phone">Phone Number</label>
                             <input
                                 type="tel"
+                                id="phone"
+                                name="phone"
                                 className="p-3 border border-box outline-primary"
                             />
                         </div>
                     </div>
                     <div className="flex justify-between gap-5">
                         <div className="flex flex-col gap-2 flex-1">
-                            <label htmlFor="" className="font-semibold">
+                            <label htmlFor="address" className="font-semibold">
                                 Address
                             </label>
                             <input
-                                type="email"
+                                type="text"
+                                id="address"
+                                name="address"
                                 className="p-3 border border-box outline-primary"
                                 placeholder="123 Main St"
                             />
@@ -62,11 +95,16 @@ export default function Checkout() {
                     </div>
                     <div className="flex justify-between gap-5">
                         <div className="flex flex-col gap-2 flex-1">
-                            <label htmlFor="" className="font-semibold">
+                            <label
+                                htmlFor="addressOpt"
+                                className="font-semibold"
+                            >
                                 Address (Optional)
                             </label>
                             <input
-                                type="email"
+                                type="text"
+                                id="addressOpt"
+                                name="addressOpt"
                                 className="p-3 border border-box outline-primary"
                                 placeholder="Apartment or Suite"
                             />
@@ -74,36 +112,62 @@ export default function Checkout() {
                     </div>
                     <div className="flex justify-between gap-5">
                         <div className="flex flex-col gap-2 flex-1">
-                            <label htmlFor="" className="font-semibold">
+                            <label htmlFor="city" className="font-semibold">
                                 Town/City
                             </label>
                             <input
-                                type="email"
+                                type="text"
+                                id="city"
+                                name="city"
                                 className="p-3 border border-box outline-primary"
                             />
                         </div>
                     </div>
                     <div className="flex justify-between gap-5">
-                        <div className="flex flex-col gap-2 flex-1">
-                            <label htmlFor="" className="font-semibold">
+                        <div className="flex flex-col gap-2 flex-1 w-32">
+                            <label htmlFor="country" className="font-semibold">
                                 Country
                             </label>
-                            <input
-                                type="email"
+                            <select
+                                name="country"
+                                id="country"
                                 className="p-3 border border-box outline-primary"
-                            />
+                                value={selectedCountry}
+                                onChange={(e) =>
+                                    setSelectedCountry(e.target.value)
+                                }
+                            >
+                                {countries.map(({ country }, i) => (
+                                    <option key={i} value={country}>
+                                        {country}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+                        <div className="flex flex-col gap-2 flex-1 w-32">
+                            <label htmlFor="state">State</label>
+                            <select
+                                name="state"
+                                id="state"
+                                className="p-3 border border-box outline-primary"
+                                value={selectedState}
+                                onChange={(e) =>
+                                    setSelectedState(e.target.value)
+                                }
+                            >
+                                {getStates(selectedCountry).map((state, i) => (
+                                    <option key={i} value={state}>
+                                        {state}
+                                    </option>
+                                ))}
+                            </select>
                         </div>
                         <div className="flex flex-col gap-2 flex-1">
-                            <label htmlFor="">State</label>
+                            <label htmlFor="postcode">Zip / Postcode</label>
                             <input
-                                type="tel"
-                                className="p-3 border border-box outline-primary"
-                            />
-                        </div>
-                        <div className="flex flex-col gap-2 flex-1">
-                            <label htmlFor="">Zip / Postcode</label>
-                            <input
-                                type="tel"
+                                type="number"
+                                id="postcode"
+                                name="postcode"
                                 className="p-3 border border-box outline-primary"
                             />
                         </div>
@@ -117,29 +181,35 @@ export default function Checkout() {
                 <div className="flex flex-col gap-8 py-8">
                     <div className="flex justify-between gap-5">
                         <div className="flex flex-col gap-2 flex-1">
-                            <label htmlFor="" className="font-semibold">
+                            <label htmlFor="date" className="font-semibold">
                                 Date
                             </label>
                             <input
                                 type="date"
+                                id="date"
+                                name="date"
                                 className="p-3 border border-box outline-primary"
                             />
                         </div>
                         <div className="flex flex-col gap-2 flex-1">
-                            <label htmlFor="">Time</label>
+                            <label htmlFor="time">Time</label>
                             <input
                                 type="time"
+                                id="time"
+                                name="time"
                                 className="p-3 border border-box outline-primary"
                             />
                         </div>
                     </div>
                     <div className="flex justify-between gap-5">
                         <div className="flex flex-col gap-2 flex-1">
-                            <label htmlFor="" className="font-semibold">
+                            <label htmlFor="comments" className="font-semibold">
                                 Comments
                             </label>
                             <textarea
                                 rows="5"
+                                id="comments"
+                                name="comments"
                                 className="p-3 border border-box outline-primary"
                                 placeholder="Any information or details you want to let us know in relation to your order and pick-up."
                             ></textarea>
@@ -147,7 +217,11 @@ export default function Checkout() {
                     </div>
                     <div className="flex justify-between gap-5">
                         <div className="flex gap-2 flex-1">
-                            <input type="checkbox" name="" id="" />
+                            <input
+                                type="checkbox"
+                                name="subscribe"
+                                id="subscribe"
+                            />
                             <p>
                                 Subscribe to our products, services, and
                                 marketing emails.
@@ -155,9 +229,12 @@ export default function Checkout() {
                         </div>
                     </div>
                     <div className="flex justify-end gap-5">
-                        <button className="bg-primary text-white px-24 text-sm py-3">
+                        <Link
+                            to="/account"
+                            className="bg-primary text-white px-24 text-sm py-3"
+                        >
                             Place Order
-                        </button>
+                        </Link>
                     </div>
                 </div>
             </div>
