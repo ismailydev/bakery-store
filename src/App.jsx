@@ -5,10 +5,12 @@ import { Header, NavBar, Breadcrumb, Footer } from "./components";
 function App() {
     return (
         <BrowserRouter>
-            <Header />
-            <NavBar />
-            <Breadcrumb />
-            <div className="max-w-6xl mx-auto">
+            <div className="z-50 fixed top-0 left-0 w-full">
+                <Header />
+                <NavBar />
+            </div>
+            <div className="max-w-6xl mx-auto mt-24">
+                <Breadcrumb />
                 <Routes>
                     <Route path="/" element={<Products />} />
                     <Route path="/cart" element={<Cart />} />
