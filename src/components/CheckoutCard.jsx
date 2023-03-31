@@ -5,6 +5,7 @@ export default function CheckoutCard({
     pack,
     category,
     image,
+    quantity,
 }) {
     return (
         <div className="border border-box m-5 p-5 flex gap-4 items-center">
@@ -12,7 +13,7 @@ export default function CheckoutCard({
                 <img
                     src={image}
                     alt={name}
-                    className="w-16 h-20 object-cover"
+                    className="w-16 h-20 object-cover border border-box"
                 />
             </div>
             <div className="text-xs text-tertiary flex flex-col gap-0.5">
@@ -22,7 +23,7 @@ export default function CheckoutCard({
                 {weight && <p>Weight: {weight}</p>}
                 {type && <p>Type: {type}</p>}
                 <p>Category: {category}</p>
-                <p>Quantity: {1}</p>
+                <p>Quantity: {quantity}</p>
             </div>
         </div>
     );

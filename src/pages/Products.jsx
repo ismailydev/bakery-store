@@ -1,14 +1,26 @@
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { ProductCard } from "../components";
 import { data as products } from "../constants";
 
 export default function Products() {
+    const { pathname } = useLocation();
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [pathname]);
+
     return (
         <div className="min-h-screen py-12">
             <div className="flex justify-between">
                 <h1 className="text-3xl font-bold">All Products</h1>
                 <div className="flex items-center">
                     <p>Sort By:</p>
-                    <select name="" id="">
+                    <select
+                        name="sortBy"
+                        id="sortBy"
+                        className="outline-primary"
+                    >
                         <option value="Newest">Newest</option>
                         <option value="Popular">Popular</option>
                         <option value="Lowest Price">Lowest Price</option>
