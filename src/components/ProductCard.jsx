@@ -2,6 +2,7 @@ import { StarIcon as StarIconSolid } from "@heroicons/react/24/solid";
 import { StarIcon as StarIconOutline } from "@heroicons/react/24/outline";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../redux/cartSlice";
+import { toast } from "react-hot-toast";
 
 export default function ProductCard({
     id,
@@ -40,6 +41,7 @@ export default function ProductCard({
                 status,
             })
         );
+        toast.success("Item added to cart");
     };
 
     return (

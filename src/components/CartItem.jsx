@@ -2,6 +2,7 @@ import { useState } from "react";
 import { removeFromCart, updateCart } from "../redux/cartSlice";
 import { useDispatch } from "react-redux";
 import { XMarkIcon } from "@heroicons/react/24/solid";
+import { toast } from "react-hot-toast";
 
 export default function CartItem({
     id,
@@ -63,6 +64,7 @@ export default function CartItem({
                         onClick={() => {
                             setQty((prevQty) => prevQty - 1);
                             dispatch(removeFromCart({ id }));
+                            toast.error("Item removed from cart");
                         }}
                         className="flex items-center text-tertiary text-sm gap-1"
                     >

@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Products, Cart, Checkout, Account } from "./pages";
 import { Header, NavBar, Breadcrumb, Footer } from "./components";
+import { Toaster } from "react-hot-toast";
 
 function App() {
     return (
@@ -19,6 +20,7 @@ function App() {
                 </Routes>
             </div>
             <Footer />
+            <Toaster />
         </BrowserRouter>
     );
 }
