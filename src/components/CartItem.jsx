@@ -1,21 +1,34 @@
+import { useState } from "react";
+import { removeFromCart, updateCart } from "../redux/cartSlice";
+import { useDispatch } from "react-redux";
 import { XMarkIcon } from "@heroicons/react/24/solid";
 
 export default function CartItem({
-    name,
+    id,
     image,
-    price,
+    name,
     category,
+    pack,
     weight,
     type,
-    pack,
+    price,
+    quantity,
 }) {
+    const [qty, setQty] = useState(quantity);
+    const dispatch = useDispatch();
+
+    const handleChange = (e) => {
+        setQty(e.target.value);
+        dispatch(updateCart({ id, qty: +e.target.value }));
+    };
+
     return (
         <div className="flex gap-8 border-b border-box py-8">
             <div>
                 <img
                     src={image}
                     alt={name}
-                    className="w-32 h-40 object-cover"
+                    className="w-32 h-40 object-cover border border-box"
                 />
             </div>
             <div className="flex-1 flex flex-col gap-2">
@@ -23,7 +36,7 @@ export default function CartItem({
                     <h3>
                         {name} {pack && <span>({pack} Pack)</span>}
                     </h3>
-                    <p>${price}</p>
+                    <p>${qty * price}</p>
                 </div>
                 <div className="text-tertiary text-sm flex flex-col gap-2">
                     {weight && <p>Weight: {weight}</p>}
@@ -31,16 +44,28 @@ export default function CartItem({
                     <p>Category: {category}</p>
                 </div>
                 <div className="mt-auto flex justify-between text-tertiary">
-                    <select name="" id="" className="border border-box w-12">
+                    <select
+                        name="quantity"
+                        id="quantity"
+                        className="border border-box w-12"
+                        value={qty}
+                        onChange={handleChange}
+                    >
                         {Array.from({ length: 6 }, (_, val) => val + 1).map(
                             (num, i) => (
-                                <option value={num} defaultValue={1} key={i}>
+                                <option defaultValue={num} key={i}>
                                     {num}
                                 </option>
                             )
                         )}
                     </select>
-                    <button className="flex items-center text-tertiary text-sm gap-1">
+                    <button
+                        onClick={() => {
+                            setQty((prevQty) => prevQty - 1);
+                            dispatch(removeFromCart({ id }));
+                        }}
+                        className="flex items-center text-tertiary text-sm gap-1"
+                    >
                         <XMarkIcon className="w-4 h-4" />
                         Remove
                     </button>

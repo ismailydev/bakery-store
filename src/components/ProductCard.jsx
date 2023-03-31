@@ -1,22 +1,55 @@
 import { StarIcon as StarIconSolid } from "@heroicons/react/24/solid";
 import { StarIcon as StarIconOutline } from "@heroicons/react/24/outline";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../redux/cartSlice";
 
 export default function ProductCard({
+    id,
     name,
-    category,
+    image,
     type,
     weight,
     pack,
+    category,
     price,
+    stock,
     rating,
     reviews,
-    image,
-    stock,
+    orderNumber,
+    date,
+    status,
 }) {
+    const dispatch = useDispatch();
+
+    const addProductToCart = () => {
+        dispatch(
+            addToCart({
+                id,
+                name,
+                image,
+                type,
+                weight,
+                pack,
+                category,
+                price,
+                stock,
+                rating,
+                reviews,
+                orderNumber,
+                date,
+                status,
+            })
+        );
+    };
+
     return (
         <div>
             <div className="relative">
-                <img src={image} alt={name} />
+                <img
+                    src={image}
+                    alt={name}
+                    className="object-cover w-full h-52"
+                />
                 <div
                     className={`absolute top-4 left-4 px-3 py-1 text-white text-xs ${
                         stock === "New Arrival" ? "bg-primary" : "bg-accent"
@@ -51,7 +84,10 @@ export default function ProductCard({
                     </div>
                     <p className="font-bold text-xs">{reviews}</p>
                 </div>
-                <button className="bg-secondary text-white w-full py-2 text-sm">
+                <button
+                    onClick={addProductToCart}
+                    className="bg-secondary text-white w-full py-2 text-sm"
+                >
                     Add to Cart
                 </button>
             </div>
