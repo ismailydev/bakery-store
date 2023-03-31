@@ -17,12 +17,16 @@ import twitterG from "../assets/icons/twitter (2).png";
 import user from "../assets/icons/user.png";
 import userCircle from "../assets/icons/Group 1.png";
 import layoutList from "../assets/icons/layout-list.png";
+import layoutListB from "../assets/icons/layout-listB.png";
 import logOut from "../assets/icons/log-out.png";
 import phone from "../assets/icons/phone.png";
 import shoppingBag from "../assets/icons/shopping-bag.png";
 import truck from "../assets/icons/truck.png";
 
 import data from "./data";
+
+const countriesURL =
+    "https://gist.githubusercontent.com/ebaranov/41bf38fdb1a2cb19a781/raw/fb097a60427717b262d5058633590749f366bd80/gistfile1.json";
 
 export {
     logo,
@@ -35,6 +39,7 @@ export {
     user,
     userCircle,
     layoutList,
+    layoutListB,
     logOut,
     phone,
     shoppingBag,
@@ -44,3 +49,5 @@ export {
 export { image1, image2, image3, image4, image5, image6, image7, image8 };
 
 export { data };
+
+export { countriesURL };
