@@ -26,10 +26,10 @@ export default function Account() {
     return (
         <div className="min-h-screen py-12">
             <div className="flex justify-between">
-                <h1 className="text-3xl font-bold">My Orders</h1>
+                <h1 className="text-xl md:text-3xl font-bold">My Orders</h1>
             </div>
             {Object.entries(groupedProductsInCart).length !== 0 ? (
-                <div className="grid grid-cols-1 gap-5 py-8 pb-24">
+                <div className="grid grid-cols-1 gap-5 py-8 pb:12 md:pb-24">
                     {Object.entries(groupedProductsInCart).map(
                         ([key, products]) => (
                             <OrderCard key={key} {...products[0]} />

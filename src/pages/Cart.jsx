@@ -26,11 +26,16 @@ export default function Cart() {
     }, [pathname]);
 
     return (
-        <div className="min-h-screen py-12 flex gap-12">
+        <div className="min-h-screen py-12 flex flex-col md:flex-row gap-12">
             <div className="flex-1">
                 <div className="flex justify-between items-center border-b border-box pb-5">
-                    <h1 className="text-3xl font-bold">Shopping Cart</h1>
-                    <p className="font-semibold">{products.length} Items</p>
+                    <h1 className="text-xl md:text-3xl font-bold">
+                        Shopping Cart
+                    </h1>
+                    <p className="font-semibold">
+                        {products.length}{" "}
+                        {products.length === 1 ? "Item" : "Items"}
+                    </p>
                 </div>
                 {Object.entries(groupedProductsInCart).length !== 0 ? (
                     <div className="grid grid-cols-1 pb-12">

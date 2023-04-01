@@ -47,7 +47,7 @@ export default function Breadcrumb() {
     };
 
     return (
-        <div className="pt-12 max-w-6xl mx-auto text-tertiary text-sm">
+        <div className="pt-24 md:pt-12 w-full md:max-w-6xl mx-auto text-tertiary text-sm">
             {getPath(location.pathname)}
         </div>
     );

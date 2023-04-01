@@ -43,7 +43,7 @@ export default function ProductCard({
     };
 
     return (
-        <div>
+        <div className="">
             <div className="relative">
                 <img
                     src={image}

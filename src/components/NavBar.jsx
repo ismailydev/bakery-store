@@ -19,9 +19,9 @@ export default function NavBar() {
     const [menuOpen, setMenuOpen] = useState(false);
 
     return (
-        <div className="py-4 shadow-md bg-white">
+        <div className="p-4 md:px-0 shadow-md bg-white">
             <div className="max-w-6xl mx-auto flex justify-between items-center">
-                <Link to="/" className="w-32">
+                <Link to="/" className="w-12 md:w-32">
                     <img src={logo} alt="I&I Rose Garden" className="w-7 h-7" />
                 </Link>
                 <div className="flex-1">

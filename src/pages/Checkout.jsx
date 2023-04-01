@@ -26,13 +26,15 @@ export default function Checkout() {
     }, [pathname]);
 
     return (
-        <div className="min-h-screen py-12 flex gap-12">
+        <div className="min-h-screen py-12 flex flex-col-reverse md:flex-row gap-12">
             <div className="flex-1">
                 <div className="flex justify-between items-center border-b border-box pb-5">
-                    <h1 className="text-3xl font-bold">Your Information</h1>
+                    <h1 className="text-xl md:text-3xl font-bold">
+                        Your Information
+                    </h1>
                 </div>
                 <div className="flex flex-col gap-8 py-8">
-                    <div className="flex justify-between gap-5">
+                    <div className="flex flex-col md:flex-row justify-between gap-5">
                         <div className="flex flex-col gap-2 flex-1">
                             <label
                                 htmlFor="firstName"
@@ -57,7 +59,7 @@ export default function Checkout() {
                             />
                         </div>
                     </div>
-                    <div className="flex justify-between gap-5">
+                    <div className="flex flex-col md:flex-row justify-between gap-5">
                         <div className="flex flex-col gap-2 flex-1">
                             <label htmlFor="email" className="font-semibold">
                                 Email Address
@@ -79,7 +81,7 @@ export default function Checkout() {
                             />
                         </div>
                     </div>
-                    <div className="flex justify-between gap-5">
+                    <div className="flex flex-col md:flex-row justify-between gap-5">
                         <div className="flex flex-col gap-2 flex-1">
                             <label htmlFor="address" className="font-semibold">
                                 Address
@@ -93,7 +95,7 @@ export default function Checkout() {
                             />
                         </div>
                     </div>
-                    <div className="flex justify-between gap-5">
+                    <div className="flex flex-col md:flex-row justify-between gap-5">
                         <div className="flex flex-col gap-2 flex-1">
                             <label
                                 htmlFor="addressOpt"
@@ -110,7 +112,7 @@ export default function Checkout() {
                             />
                         </div>
                     </div>
-                    <div className="flex justify-between gap-5">
+                    <div className="flex flex-col md:flex-row justify-between gap-5">
                         <div className="flex flex-col gap-2 flex-1">
                             <label htmlFor="city" className="font-semibold">
                                 Town/City
@@ -123,8 +125,8 @@ export default function Checkout() {
                             />
                         </div>
                     </div>
-                    <div className="flex justify-between gap-5">
-                        <div className="flex flex-col gap-2 flex-1 w-32">
+                    <div className="flex flex-col md:flex-row justify-between gap-5">
+                        <div className="flex flex-col gap-2 flex-1 w-full md:w-32">
                             <label htmlFor="country" className="font-semibold">
                                 Country
                             </label>
@@ -144,7 +146,7 @@ export default function Checkout() {
                                 ))}
                             </select>
                         </div>
-                        <div className="flex flex-col gap-2 flex-1 w-32">
+                        <div className="flex flex-col gap-2 flex-1 w-full md:w-32">
                             <label htmlFor="state">State</label>
                             <select
                                 name="state"
@@ -174,12 +176,12 @@ export default function Checkout() {
                     </div>
                 </div>
                 <div className="flex justify-between items-center border-b border-box pb-5 py-2">
-                    <h1 className="text-3xl font-bold">
+                    <h1 className="text-xl md:text-3xl font-bold">
                         Schedule Order Pick-up
                     </h1>
                 </div>
                 <div className="flex flex-col gap-8 py-8">
-                    <div className="flex justify-between gap-5">
+                    <div className="flex flex-col md:flex-row justify-between gap-5">
                         <div className="flex flex-col gap-2 flex-1">
                             <label htmlFor="date" className="font-semibold">
                                 Date
@@ -228,7 +230,7 @@ export default function Checkout() {
                             </p>
                         </div>
                     </div>
-                    <div className="flex justify-end gap-5">
+                    <div className="flex justify-center md:justify-end gap-5">
                         <Link
                             to="/account"
                             className="bg-primary text-white px-24 text-sm py-3"

@@ -13,8 +13,8 @@ export default function Products() {
     return (
         <div className="min-h-screen py-12">
             <div className="flex justify-between">
-                <h1 className="text-3xl font-bold">All Products</h1>
-                <div className="flex items-center">
+                <h1 className="text-xl md:text-3xl font-bold">All Products</h1>
+                <div className="flex items-center text-sm">
                     <p>Sort By:</p>
                     <select
                         name="sortBy"
@@ -28,7 +28,7 @@ export default function Products() {
                     </select>
                 </div>
             </div>
-            <div className="grid grid-cols-4 gap-5 py-12">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-5 py-12">
                 {products.map((product) => (
                     <ProductCard key={product.id} {...product} />
                 ))}

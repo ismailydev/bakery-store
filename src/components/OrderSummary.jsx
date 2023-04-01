@@ -23,7 +23,7 @@ export default function OrderSummary({ checkout }) {
     }, [products]);
 
     return (
-        <div className="w-[350px]">
+        <div className="w-full md:w-[350px]">
             <div className="shadow-lg">
                 <div className="flex justify-between p-5 border-b border-box">
                     <h1 className="text-2xl font-semibold">Order Summary</h1>

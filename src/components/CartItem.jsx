@@ -32,18 +32,18 @@ export default function CartItem({
                 />
             </div>
             <div className="flex-1 flex flex-col gap-2">
-                <div className="flex justify-between font-bold text-lg">
+                <div className="flex flex-col md:flex-row justify-between font-bold text-lg">
                     <h3>
                         {name} {pack && <span>({pack} Pack)</span>}
                     </h3>
-                    <p>${qty * price}</p>
+                    <p className="py-2 md:py-0">${qty * price}</p>
                 </div>
                 <div className="text-tertiary text-sm flex flex-col gap-2">
                     {weight && <p>Weight: {weight}</p>}
                     {type && <p>Type: {type}</p>}
                     <p>Category: {category}</p>
                 </div>
-                <div className="mt-auto flex justify-between text-tertiary">
+                <div className="mt-auto flex flex-col md:flex-row gap-4 justify-between text-tertiary">
                     <select
                         name="quantity"
                         id="quantity"

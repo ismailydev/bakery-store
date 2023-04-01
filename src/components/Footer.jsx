@@ -3,8 +3,8 @@ import { logo, facebookG, instagramG, twitterG } from "../constants";
 export default function Footer() {
     return (
         <div className="bg-light">
-            <div className="flex flex-col items-center">
-                <div className="grid grid-cols-5 py-12 pb-24 max-w-6xl mx-auto">
+            <div className="flex flex-col items-center px-4">
+                <div className="grid grid-cols-1 md:grid-cols-5 gap-12 md:gap-0 py-6 pb-12 md:pb-24 w-full md:max-w-6xl mx-auto">
                     <div className="flex flex-col gap-4">
                         <a href="#">
                             <img
@@ -73,7 +73,7 @@ export default function Footer() {
                         </ul>
                     </div>
                 </div>
-                <div className="border-t border-box text-tertiary w-full text-center py-4">
+                <div className="border-t border-box text-tertiary w-full text-xs md:text-base text-center py-4">
                     <p>
                         Copyright (c) 2023. I & I Rose Garden. All Rights
                         Reserved

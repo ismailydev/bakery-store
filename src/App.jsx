@@ -9,7 +9,7 @@ function App() {
                 <Header />
                 <NavBar />
             </div>
-            <div className="max-w-6xl mx-auto mt-24">
+            <div className="max-w-6xl mx-auto mt-24 px-4 md:px-0">
                 <Breadcrumb />
                 <Routes>
                     <Route path="/" element={<Products />} />

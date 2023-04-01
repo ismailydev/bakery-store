@@ -7,15 +7,15 @@ export default function OrderCard({
     price,
 }) {
     return (
-        <div className="border border-box p-5 flex">
+        <div className="border border-box p-5 flex flex-col md:flex-row">
             <div>
                 <img
                     src={image}
                     alt={name}
-                    className="w-24 h-24 object-cover"
+                    className="w-full md:w-24 md:h-24 object-cover"
                 />
             </div>
-            <div className="flex flex-1 items-center justify-between px-12">
+            <div className="flex flex-col md:flex-row gap-4 flex-1 items-start md:items-center justify-between md:px-12 py-4 md:py-0">
                 <div className="flex flex-col gap-1">
                     <p className="text-tertiary text-sm">Order Number</p>
                     <p className="font-semibold">{orderNumber}</p>
